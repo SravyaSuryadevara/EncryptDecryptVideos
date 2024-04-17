@@ -1,0 +1,6 @@
+<video id="vid1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264"
+    data-setup='{"controlBar": {"pictureInPictureToggle": false}}'>
+  <source src="<%= @video.decrypted_video_url %>" type="video/mp4">
+</video>
+<p>This demo shows how to implement polyfill for the <b>:focus-visible</b> selector. You can read more about the polyfill <a href="https://github.com/WICG/focus-visible"> here</a>.</p>
+<script src="https://unpkg.com/focus-visible"></script>

@@ -1,0 +1,4 @@
+<%= form_with(model: @video, url: videos_path, local: true, multipart: true) do |form| %>
+    <%= form.file_field :encrypted_attachment, name: "video[encrypted_attachments][]", multiple: true %>
+    <%= form.submit 'Upload Video' %>
+  <% end %>

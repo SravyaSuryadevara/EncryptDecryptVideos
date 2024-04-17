@@ -1,0 +1,26 @@
+<% selected_id = nil %>
+<select id="video-dropdown" name="selected_id">
+  <option value="">Select Video</option>
+  <% Dir.glob('/home/sravya/Videos/encrypted_videos/*').each do |file_path| %>
+    <% file_name = File.basename(file_path) %>
+    <% video = Video.where(original_file_name: file_name).last %>
+    <% if video %>
+      <option value="<%= video.id %>"><%= video.original_file_name %></option>
+    <% end %>
+  <% end %>
+</select>
+
+<%= link_to "Submit", "#", class: "btn btn-primary", method: :get, id: "submit-button" %>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdown = document.getElementById('video-dropdown');
+  const submitButton = document.getElementById('submit-button');
+
+  dropdown.addEventListener('change', function() {
+    const selectedOption = dropdown.options[dropdown.selectedIndex];
+    const selectedId = selectedOption.value;
+    submitButton.setAttribute('href', "/videos/" + selectedId);
+  });
+});
+</script>
